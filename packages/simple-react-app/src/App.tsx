@@ -2,6 +2,11 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
+import _ from 'lodash'
+import { QueryPayload } from 'simple-shared-data'
+
+import DarkMode from './react-dark-mode/src/DarkMode'
+
 function App() {
   return (
     <div className="App">
@@ -16,17 +21,18 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          {_.toUpper('Learn React')}
         </a>
         <button
           onClick={() => {
             fetch('http://localhost:3001/', {})
               .then((res) => res.json())
-              .then((data) => console.log(data))
+              .then((data: QueryPayload) => console.log(data))
           }}
         >
           GET SOME DATA
         </button>
+        <DarkMode />
       </header>
     </div>
   )
